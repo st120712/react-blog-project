@@ -8,11 +8,22 @@ import './App.css';
 
 function App() {
 
-  let [글정보, 글정보변경] = useState([['남자 코트 추천', '2월 17일 발행',false], ['강남 우동 맛집', '2월 18일 발행',false], ['코딩 일기', '2월 19일 발행',false]]);
-  let [따봉, 따봉변경] = useState([0,0,0]);
-  let posts = '강남 고기 맛집';
+  let [글정보, 글정보변경] = useState([['남자 코트 추천', '2월 17일 발행', false, 0], ['강남 우동 맛집', '2월 18일 발행', false, 0], ['코딩 일기', '2월 19일 발행', false, 0]]);
+  let [inputText, setInputText] = useState();
 
-  let openModal = (i)=>{
+  let upload = () => {
+    var tmp = [...글정보];
+    tmp.push([inputText, '2월 17일 발행', false, 0]);
+    글정보변경(tmp);
+  }
+
+  let favorite = (i) => {
+    var tmp = [...글정보];
+    tmp[i][3] = tmp[i][3] + 1;
+    글정보변경(tmp);
+  }
+
+  let openModal = (i) => {
     var tmp = [...글정보];
     tmp[i][2] = !tmp[i][2];
     글정보변경(tmp);
@@ -23,35 +34,40 @@ function App() {
       <div className="black-nav">
         <div>개발 Blog</div>
       </div>
-      {/* <div className="list">
-        <h3>{글제목[0]} <span onClick={() => { 따봉변경(따봉 + 1) }}>👍</span>{따봉}</h3>
-        <p>2월 17일 발행</p>
-        <hr />
-      </div>
-      <div className="list">
-        <h3>{글제목[1]}</h3>
-        <p>2월 18일 발행</p>
-        <hr />
-      </div>
-      <div className="list">
-        <h3 onClick={() => { setModal(!modal) }}>{글제목[2]}</h3>
-        <p>2월 19일 발행</p>
-        <hr />
-      </div> */}
 
       {
         글정보.map(function (a, i) {
-          return (<>
-            <div className="list">
-              <h4 onClick={()=>{openModal(i)}}>{a[0]}</h4>
-              <p>{a[1]}</p>
-              <hr />
-            </div>
-           {a[2] ? <Modal 글정보 = {글정보[i]}/> : null}
+          return (
+            <>
+              <div className="list">
+                <h4 onClick={() => { openModal(i) }}>
+                  {a[0]}
+                  <span onClick={(e) => {
+                    e.stopPropagation();
+                    favorite(i);
+                  }}>👍</span>
+                  {a[3]}
+                </h4>
+                <p>
+                  {a[1]}
+                </p>
+                <hr />
+              </div>
+              {a[2] ? <Modal 글정보={글정보[i]} /> : null}
             </>
           )
         })
       }
+
+      <div>
+        <input onChange={(e) => {
+          setInputText(e.target.value);
+        }}></input>
+        <button onClick={() => {
+          upload();
+        }}>업로드</button>
+      </div>
+
 
     </div>
   );
