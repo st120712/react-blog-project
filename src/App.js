@@ -11,9 +11,15 @@ function App() {
   let [글정보, 글정보변경] = useState([['남자 코트 추천', '2월 17일 발행', false, 0], ['강남 우동 맛집', '2월 18일 발행', false, 0], ['코딩 일기', '2월 19일 발행', false, 0]]);
   let [inputText, setInputText] = useState();
 
-  let upload = () => {
+  let uploadPost = () => {
     var tmp = [...글정보];
-    tmp.push([inputText, '2월 17일 발행', false, 0]);
+    tmp.unshift([inputText, '2월 17일 발행', false, 0]);
+    글정보변경(tmp);
+  }
+
+  let deletePost = (i) => {
+    var tmp = [...글정보];
+    tmp.splice(i,1);
     글정보변경(tmp);
   }
 
@@ -39,7 +45,7 @@ function App() {
         글정보.map(function (a, i) {
           return (
             <>
-              <div className="list">
+              <div className="list" key={i}>
                 <h4 onClick={() => { openModal(i) }}>
                   {a[0]}
                   <span onClick={(e) => {
@@ -51,6 +57,7 @@ function App() {
                 <p>
                   {a[1]}
                 </p>
+                <button onClick={()=>{deletePost(i);}}>삭제</button>
                 <hr />
               </div>
               {a[2] ? <Modal 글정보={글정보[i]} /> : null}
@@ -64,10 +71,9 @@ function App() {
           setInputText(e.target.value);
         }}></input>
         <button onClick={() => {
-          upload();
+          uploadPost();
         }}>업로드</button>
       </div>
-
 
     </div>
   );
@@ -81,6 +87,25 @@ function Modal(props) {
       <p>상세내용</p>
     </div>
   )
+}
+
+class Modal2 extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      name : 'kim',
+      age : 20
+    }
+  }
+  render(){
+    return (
+      <div>안녕 {this.state.name}
+        <button onClick={()=>{
+          this.setState({age : 21})
+        }}>버튼</button>
+      </div>
+    )
+  }
 }
 
 export default App;
