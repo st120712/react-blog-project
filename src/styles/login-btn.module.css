@@ -1,0 +1,15 @@
+.container {
+  position: relative;
+  text-align: center;
+}
+
+.loginBtn {
+  background-color: #242927;
+  border: none;
+  color: white;
+  padding: 6px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 4px;
+}

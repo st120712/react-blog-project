@@ -1,0 +1,21 @@
+.container {
+  background-color: #E3ECF1;
+}
+
+.sidebar {
+  background-color: #E3ECF1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  color: #202020;
+  height: 100%;
+  z-index: 99;
+}
+
+.content {
+  /*TRBL*/
+  padding: 20px 0 0 0;
+  position: relative;
+  width: 100%;
+}
