@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.avatar {
+  border: 5px solid rgb(193, 207, 206);
+  background-color: white;
+}
