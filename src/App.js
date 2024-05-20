@@ -2,18 +2,17 @@
 
 import React, { useState } from 'react';
 import './App.css';
-import Sidebar from './components/Sidebar';
+import MainView from './views/MainView';
+import TotalSeries from './components/TotalSeries';
 
 
 function App() {
-
   return (
     <body>
-      <Sidebar>
-      </Sidebar>
+      <MainView>
+        <TotalSeries />
+      </MainView>
     </body>
-
-
   );
 }
 

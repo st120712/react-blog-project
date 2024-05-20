@@ -1,4 +1,4 @@
-import styles from './../styles/circle_avatar.module.css';
+import styles from './../../styles/circle-avatar.module.css';
 
 function CircleAvatar({ width }) {
   return (

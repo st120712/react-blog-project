@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+}
+
+.title {
+  font-weight: bold;
+}
+
+hr {
+  margin: 20px 0;
+}
+
+.content {
+  width: 100%;
+  display: grid;
+  row-gap: 50px;
+  column-gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+}
