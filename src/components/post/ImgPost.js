@@ -1,4 +1,4 @@
-import styles from './../../styles/img-post.module.css';
+import styles from './../../styles/post/img-post.module.css';
 
 function ImgPost(props) {
   return (

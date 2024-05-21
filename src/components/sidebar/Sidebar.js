@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import styles from "./../../styles/sidebar.module.css";
+import styles from "./../../styles/sidebar/sidebar.module.css";
 
 const Sidebar = ({ width = 280, children }) => {
   const side = useRef();

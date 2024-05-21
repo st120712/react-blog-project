@@ -1,4 +1,4 @@
-import styles from './../../styles/login-btn.module.css';
+import styles from './../../styles/sidebar/login-btn.module.css';
 
 function LoginBtn() {
   return (
